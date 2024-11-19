@@ -1,5 +1,97 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!--    <color name="colorPrimary">#ED9C04</color>-->
+    <!--    <color name="colorPrimaryDark">#ED9C04</color>-->
+    <!--    -->
+    <!--    <color name="pbLoadColor">#FF9800</color>-->
+    <!--    <color name="orange_gradient_start">#FFA726</color>-->
+    <!--    <color name="orange_gradient_end">#F57F17</color>-->
+    <!--    <color name="light_orange">#ECAA37</color>-->
+<!--    <color name="light_orange_text">#FADEAD</color>-->
+
+    <color name="colorPrimary">#2D8BF1</color>
+    <color name="colorPrimaryDark">#2D8BF1</color>
+    <color name="pbLoadColor">#2D8BF1</color>
+    <color name="red">#EE534F</color>
+    <color name="grey">#C4C4C4</color>
+    <color name="orange">#F9AA33</color>
+    <color name="green">#66BB6A</color>
+
+    <color name="light_orange">#FFCC80</color>
+    <color name="light_orange_text">#FFCC80</color>
+    <color name="orange_gradient_start">#F9AA33</color>
+    <color name="orange_gradient_end">#F9AA33</color>
+
+
+<!--    <color name="colorBackground">#0D4D88</color>-->
+<!--    <color name="blue_gradient_start">#0C80B8</color>-->
+<!--    <color name="blue_gradient_end">#103A85</color>-->
+
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="blue_gradient_start">#4A6572</color>
+    <color name="blue_gradient_end">#232F34</color>
+
+
+<!--    <color name="light_green">#6ABC56</color>-->
+<!--    <color name="light_green_text">#AEE1A2</color>-->
+<!--    <color name="green_percent_text">#AEE1A2</color>-->
+<!--    <color name="green_gradient_start">#3DED1D</color>-->
+<!--    <color name="green_gradient_end">#22A624</color>-->
+
+    <color name="light_green">#A5D6A7</color>
+    <color name="light_green_text">#A5D6A7</color>
+    <color name="green_percent_text">#A5D6A7</color>
+    <color name="green_gradient_start">#66BB6A</color>
+    <color name="green_gradient_end">#66BB6A</color>
+    <color name="toast_green_text">#2E7D32</color>
+
+
+<!--    <color name="red_gradient_start">#EF625C</color>-->
+<!--    <color name="red_gradient_end">#DC2E2C</color>-->
+<!--    <color name="light_red">#C8454E</color>-->
+<!--    <color name="light_red_text">#FFABC7</color>-->
+
+
+    <color name="red_gradient_start">#EF5350</color>
+    <color name="red_gradient_end">#EF5350</color>
+    <color name="light_red">#EF9A9A</color>
+    <color name="light_red_text">#EF9A9A</color>
+    <color name="toast_red_text">#C62828</color>
+
+
+
+
+    <color name="colorAccent">#272727</color>
+    <color name="poweredByLineColor">#FF000000</color>
+    <color name="shrine_pink_900">#C493BB</color>
+    <color name="shrine_pink_100">#F6BCBC</color>
+
+    <color name="lightWhite">#F5F5F5</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="textColor">#000000</color>
+    <color name="textLightColor">#807D7D</color>
+
+    <!-- Dashboard Colors-->
+
+    <!-- Body and background Colors-->
+    <color name="home_background">#F2F5F8</color>
+    <color name="banner_background">#F1E9CE</color>
+    <color name="banner_background_light">#56F1E9CE</color>
+
+
+    <!-- Card Colors-->
+    <color name="card1">#D4CBE5</color>
+    <color name="card4">#B8D7F5</color>
+    <color name="card5">#B5B6FD</color>
+    <color name="card6">#B8F5B9</color>
+
+    <color name="nav_header">#F5F4EF</color>
+
+
+    <color name="gray_80">#808080</color>
+    <color name="grey_c2">#C2C2C2</color>
+
+    <color name="separatorColor">#80bdc3c7</color>
 </resources>

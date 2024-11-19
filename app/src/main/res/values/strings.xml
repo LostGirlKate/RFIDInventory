@@ -1,3 +1,81 @@
 <resources>
-    <string name="app_name">RFIDInventory</string>
+    <string name="app_name">Инвентаризация ТМЦ</string>
+
+    <string name="load">Загрузить данные из файла</string>
+    <string name="loadCaption">Загрузка данных</string>
+    <string name="update">Добавить</string>
+    <string name="open_inventory">Открыть инвентаризацию</string>
+    <string name="close_inventory">Завершить инвентаризацию</string>
+    <string name="export_inventory">Выгрузить данные в Excel файл</string>
+    <string name="you_need_load_file">Выберите Excel файл для\nзагрузки данных</string>
+    <string name="you_need_choose_location_file">Необходимо выбрать местоположение для проведения инвентаризации</string>
+    <string name="progress">прогресс выполнения</string>
+    <string name="all">Всего</string>
+    <string name="found">Найдено</string>
+    <string name="tmc_found">ТМЦ найдено</string>
+    <string name="not_found">Не найдено</string>
+    <string name="tmc_not_found">ТМЦ не найдено</string>
+    <string name="found_in_wrong_place">Найдено не на своем месте</string>
+    <string name="tmc_found_in_wrong_place">ТМЦ найдено, но не на своем месте</string>
+    <string name="clear_all_message">Подтвердить закрытие инвентаризации (все текущие данные будут выгружены в Excel файл)</string>
+    <string name="reset_inventory_item_state">Подтвердить удаление ТМЦ из результатов</string>
+    <string name="current_power">Текущая мощность: %1$d</string>
+
+    <string name="data_save_message">Данные сохранены</string>
+    <string name="data_error_save_message">Ошибка сохранения данных</string>
+
+
+    <string name="file_load_action_message">Загрузка данных</string>
+    <string name="data_load_message">Данные загружены</string>
+    <string name="data_error_load_message">Ошибка загрузки данных</string>
+
+
+    <string name="file_save_action_message">Сохранение данных в файл</string>
+    <string name="file_save_message">Файл сохранен в папку Загрузки (Download)</string>
+    <string name="file_error_save_message">Ошибка соранения файла</string>
+
+    <string name="close">ЗАКРЫТЬ</string>
+    <string name="no_data_found">Нет данных</string>
+
+    <string name="status">Статус</string>
+    <string name="type">Тип</string>
+    <string name="model">Модель</string>
+    <string name="location">Местоположение</string>
+    <string name="location_fact">Местоположение факт</string>
+    <string name="inventory_num">Инв Номер Бухгалтерии</string>
+    <string name="num" translatable="false">№</string>
+    <string name="serial_num">Серийный номер</string>
+    <string name="shipment_num">Номер партии</string>
+    <string name="manager_name">Сотрудник</string>
+    <string name="rfid_dec" translatable="false">RFID Dec</string>
+    <string name="comment">Примечание</string>
+    <string name="show_tmc">Просмотр ТМЦ</string>
+    <string name="search">Поиск</string>
+    <string name="start_scanning">Запустить сканирование</string>
+    <string name="stop_scanning">Остановить сканирование</string>
+    <string name="rfid_power_title">Мощность RFID считывателя</string>
+    <string name="all_tag_found">Все метки в текущем местоположении найдены!</string>
+
+
+    <string name="init_rfid_message">Считыватель инициализирован</string>
+    <string name="init_error_rfid_message">Ошибка инициализации считывателя (выключите использование ридера сторонними приложениями и перезапустите текущее)</string>
+    <string name="init_process_rfid_message">Инициализация считывателя</string>
+    <string name="rfid" translatable="false">RFID</string>
+    <string name="_2d_scanner" translatable="false">2D scanner</string>
+    <string name="blank_string" translatable="false"> </string>
+    <string name="no">Нет</string>
+    <string name="yes">Да</string>
+    <string name="reader_type_not_found">Тип не инициализирован</string>
+    <string name="location_search">Выбор местоположения</string>
+    <string name="filter_delimetr" translatable="false">~</string>
+    <string name="reader_type_not_founded">Тип не инициализирован</string>
+    <string name="scanning_running">Идет сканирование</string>
+
+    <string name="reset_state">Удалить</string>
+    <string name="state_found">Найдено</string>
+    <string name="note_caption">Комментарий</string>
+    <string name="barcode_not_work">Не считывается ШК</string>
+    <string name="rfid_not_work">Не считывается RFID</string>
+    <string name="save">Сохранить</string>
+
 </resources>
