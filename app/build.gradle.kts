@@ -46,7 +46,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation(libs.androidx.core.splashscreen)
     implementation(libs.androidx.room.ktx)
-    implementation(libs.androidx.room.compiler)
     ksp(libs.androidx.room.compiler)
 
 
