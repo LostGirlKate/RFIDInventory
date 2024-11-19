@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:animationCache="true"
+    android:orientation="vertical"
+    app:cardCornerRadius="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="10dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp">
+
+        <TextView
+            android:id="@+id/state_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/status"
+            android:textSize="@dimen/text_big_size"
+            app:layout_constraintBottom_toTopOf="@+id/cb_rfid_not_work"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <com.google.android.material.checkbox.MaterialCheckBox
+            android:id="@+id/cb_reset_state"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:button="@drawable/checkbox_button"
+            android:paddingHorizontal="8dp"
+            android:text="@string/reset_state"
+            android:textSize="@dimen/text_medium_size"
+            app:layout_constraintBottom_toTopOf="@+id/cb_found_state"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cb_found_state"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:button="@drawable/checkbox_button"
+            android:paddingHorizontal="8dp"
+            android:text="@string/found"
+            android:textSize="@dimen/text_medium_size"
+            app:layout_constraintBottom_toTopOf="@+id/note_caption"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/note_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/note_caption"
+            android:textSize="@dimen/text_big_size"
+            app:layout_constraintBottom_toTopOf="@+id/cb_rfid_not_work"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <CheckBox
+            android:id="@+id/cb_rfid_not_work"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:button="@drawable/checkbox_button"
+            android:paddingHorizontal="8dp"
+            android:text="@string/rfid_not_work"
+            android:textSize="@dimen/text_medium_size"
+            app:layout_constraintBottom_toTopOf="@+id/cb_barcode_not_work"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/note_caption" />
+
+        <CheckBox
+            android:id="@+id/cb_barcode_not_work"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:button="@drawable/checkbox_button"
+            android:paddingHorizontal="8dp"
+            android:text="@string/barcode_not_work"
+            android:textSize="@dimen/text_medium_size"
+            app:layout_constraintBottom_toTopOf="@+id/te_comment"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/cb_rfid_not_work" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/settingPanel"
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="10dp"
+            android:theme="@style/Theme.MaterialComponents.DayNight"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="2dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_ok"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:strokeColor="@color/colorPrimary"
+            app:strokeWidth="1dp">
+
+            <EditText
+                android:id="@+id/te_comment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="16dp"
+                android:background="@color/white"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="@string/comment"
+                android:inputType="textMultiLine"
+                android:padding="10dp"
+                android:textColor="@color/black"
+                android:textColorHint="@color/grey"
+                android:textCursorDrawable="@drawable/black_cursor"
+                android:textSize="@dimen/text_medium_size" />
+        </com.google.android.material.card.MaterialCardView>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/custon_button_background"
+            android:elevation="16dp"
+            android:focusable="false"
+            android:focusableInTouchMode="false"
+            android:text="@string/save"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_medium_size"
+            app:backgroundTint="@null" />
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btn_cancel"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top|end"
+        android:backgroundTint="@color/white"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:src="@drawable/ico_close"
+        android:textAllCaps="false" />
+</androidx.cardview.widget.CardView>
