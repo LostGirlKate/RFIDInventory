@@ -11,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.navigation.fragment.findNavController
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import ru.lostgirl.rfidinventory.R
 import ru.lostgirl.rfidinventory.databinding.FragmentInventoryMainBinding
@@ -93,7 +94,7 @@ class InventoryMainFragment :
     // Инициализация кнопок
     private fun initButtons() = with(binding) {
         openInventoryButton.setOnClickListener {
-
+            findNavController().navigate(R.id.action_inventoryMainFragment_to_inventoryListFragment)
         }
         loadFromFileButton.setOnClickListener {
             viewModel.process(InventoryMainViewEvent.OpenFileManager)

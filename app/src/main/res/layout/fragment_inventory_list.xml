@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="10dp"
+    android:paddingHorizontal="16dp"
+    tools:context=".ui.list.InventoryListFragment">
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="35dp"
+        android:iconifiedByDefault="false"
+        android:isScrollContainer="true"
+        android:queryHint="@string/search"
+        app:theme="@style/AppSearchView"
+        android:queryBackground="@android:color/transparent"
+        android:background="@drawable/search_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:theme="@style/searchViewTheme" />
+
+    <TextView
+        android:id="@+id/location_spinner"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_min_height"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/spinner_background"
+        android:paddingTop="7dp"
+        android:paddingBottom="7dp"
+        android:paddingLeft="20dp"
+        android:layout_marginEnd="8dp"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_big_size"
+        tools:text="к. 200"
+        app:layout_constraintEnd_toStartOf="@+id/open_2d_scanner_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rc_inventory_list"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_state_block" />
+
+        <LinearLayout
+            android:id="@+id/filter_state_block"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/location_spinner">
+
+            <ToggleButton
+                android:id="@+id/filter_button_not_found"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_min_height"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/filter_red_button_background"
+                android:button="@drawable/filter_red_button_background"
+                android:checked="true"
+                android:freezesText="false"
+                android:textColor="@color/white"
+                android:textOff="@string/blank_string"
+                android:textOn="@string/blank_string"
+                android:textSize="@dimen/text_big_size" />
+
+            <ToggleButton
+                android:id="@+id/filter_button_found"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_min_height"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:background="@drawable/filter_green_button_background"
+                android:checked="true"
+                android:textColor="@color/white"
+                android:textOff="@string/blank_string"
+                android:textOn="@string/blank_string"
+                android:textSize="@dimen/text_big_size" />
+
+            <ToggleButton
+                android:id="@+id/filter_button_found_in_wrong_place"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/button_min_height"
+                android:layout_weight="1"
+                android:background="@drawable/filter_orange_button_background"
+                android:checked="true"
+                android:textColor="@color/white"
+                android:textOff="@string/blank_string"
+                android:textOn="@string/blank_string"
+                android:textSize="@dimen/text_big_size" />
+        </LinearLayout>
+
+        <ImageButton
+            android:id="@+id/open_rfid_scanner_button"
+            android:layout_width="@dimen/button_min_height"
+            android:layout_height="@dimen/button_min_height"
+            android:background="@drawable/orange_background"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/rfid"
+            android:src="@drawable/ico_rfid"
+            app:layout_constraintBottom_toBottomOf="@+id/location_spinner"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/location_spinner" />
+
+        <ImageButton
+            android:id="@+id/open_2d_scanner_button"
+            android:layout_width="@dimen/button_min_height"
+            android:layout_height="@dimen/button_min_height"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/orange_background"
+            android:backgroundTint="@color/white"
+            android:contentDescription="@string/_2d_scanner"
+            android:src="@drawable/ico_barcode"
+            app:layout_constraintBottom_toBottomOf="@+id/location_spinner"
+            app:layout_constraintEnd_toStartOf="@id/open_rfid_scanner_button"
+            app:layout_constraintTop_toTopOf="@+id/location_spinner" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

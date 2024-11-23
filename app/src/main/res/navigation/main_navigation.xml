@@ -10,6 +10,36 @@
         android:name="ru.lostgirl.rfidinventory.ui.main.InventoryMainFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_inventory_main" >
+        <action
+            android:id="@+id/action_inventoryMainFragment_to_inventoryListFragment"
+            app:destination="@id/inventoryListFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/inventoryListFragment"
+        android:name="ru.lostgirl.rfidinventory.ui.list.InventoryListFragment"
+        android:label="@string/show_tmc"
+        tools:layout="@layout/fragment_inventory_list" >
+        <action
+            android:id="@+id/action_inventoryListFragment_to_inventoryItemDetailFragment"
+            app:destination="@id/inventoryItemDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/inventoryItemDetailFragment"
+        android:label="{title}"
+        android:name="ru.lostgirl.rfidinventory.ui.detail.InventoryItemDetailFragment"
+        tools:layout="@layout/fragment_inventory_item_detail">
+        <argument
+            android:name="item_id"
+            android:defaultValue="-1"
+            app:argType="integer" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="state"
+            app:argType="ru.lostgirl.rfidinventory.domain.models.InventoryItemState"
+            android:defaultValue="STATE_FOUND" />
+    </fragment>
+
 
 </navigation>

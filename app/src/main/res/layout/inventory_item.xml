@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/cardView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/item_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:paddingTop="12dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/text_big_size"
+                app:layout_constraintEnd_toStartOf="@+id/state_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Модель dsjkdjsdkjskdjskdjssjdksjd " />
+
+            <TextView
+                android:id="@+id/item_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:paddingBottom="12dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_big_size"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/state_shape"
+                app:layout_constraintTop_toTopOf="@+id/item_name"
+                app:layout_constraintVertical_bias="1.0"
+                tools:text="Бухгалтерия" />
+
+            <TextView
+                android:id="@+id/item_old_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="8dp"
+                android:textSize="@dimen/text_medium_size"
+                app:layout_constraintBottom_toTopOf="@+id/item_location"
+                app:layout_constraintEnd_toStartOf="@id/state_shape"
+                tools:text="Бухгалтерия" />
+
+            <TextView
+                android:id="@+id/item_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="bottom"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium_size"
+                app:layout_constraintTop_toBottomOf="@id/manager_name"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="12125ASD121212" />
+
+            <TextView
+                android:id="@+id/manager_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textAlignment="gravity"
+                android:textSize="@dimen/text_big_size"
+                android:paddingEnd="8dp"
+                android:paddingBottom="4dp"
+                app:layout_constraintTop_toBottomOf="@id/item_name"
+                app:layout_constraintEnd_toStartOf="@id/state_shape"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:text="Крюкова Екатерина Вячеславовна" />
+
+            <TextView
+                android:id="@+id/rfid_num"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="12dp"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_medium_size"
+                android:gravity="fill_vertical"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/item_num"
+                tools:text="RFID: 12345678910" />
+
+            <ImageView
+                android:id="@+id/state_shape"
+                android:layout_width="15dp"
+                android:layout_height="0dp"
+                android:layout_marginVertical="12dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/ico_not_found"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/break_line"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@color/red"
+                android:visibility="visible"
+                app:layout_constraintBottom_toBottomOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

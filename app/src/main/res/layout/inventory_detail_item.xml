@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#00ffffff"
+    android:backgroundTint="#00ffffff">
+
+
+    <LinearLayout
+        android:id="@+id/backgroud_constrain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00ffffff"
+        android:backgroundTint="#00ffffff"
+        android:paddingTop="5dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/param_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Статус"
+            android:textColor="@color/textColor"
+            android:textSize="@dimen/text_caption_size" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/status_box"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/red_background"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/param_value"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_big_size"
+                android:textColor="@color/textColor"
+                tools:text="Не найдено" />
+
+        </LinearLayout>
+
+
+        <FrameLayout
+            android:id="@+id/break_line"
+            android:layout_width="match_parent"
+            android:layout_marginTop="5dp"
+            android:layout_height="2dp"
+            android:layout_marginEnd="10dp"
+            android:background="@color/pbLoadColor"
+            android:visibility="visible" />
+    </LinearLayout>
+
+</FrameLayout>

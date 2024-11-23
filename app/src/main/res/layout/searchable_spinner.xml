@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:animateLayoutChanges="true"
+    android:animationCache="true"
+    android:orientation="vertical"
+    android:background="@color/white"
+    app:cardCornerRadius="20dp">
+
+    <RelativeLayout
+        android:id="@+id/headLayouts"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="24dp"
+        android:background="@color/white"
+        android:orientation="vertical">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/headLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:textSize="@dimen/text_caption_size"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Выбор местоположения" />
+
+            <ImageButton
+                android:id="@+id/buttonClose"
+                android:layout_width="30dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/white"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ico_close"
+                android:textAllCaps="false"
+                app:layout_constraintBottom_toBottomOf="@+id/textViewTitle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="35dp"
+                android:layout_marginTop="14dp"
+                android:iconifiedByDefault="false"
+                android:isScrollContainer="true"
+                android:queryHint="@string/search"
+                app:theme="@style/AppSearchView"
+                android:queryBackground="@android:color/transparent"
+                android:background="@drawable/search_background"
+                app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+                android:theme="@style/searchViewTheme"
+
+                />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:layout_below="@id/headLayout">
+
+            <TextView
+                android:id="@+id/textViewError"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="40dp"
+                android:background="@android:color/white"
+                android:gravity="center"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp"
+                android:textSize="20sp"
+                android:visibility="invisible"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

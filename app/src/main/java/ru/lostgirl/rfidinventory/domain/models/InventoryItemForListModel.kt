@@ -1,6 +1,5 @@
 package ru.lostgirl.rfidinventory.domain.models
 
-import ru.lostgirl.rfidinventory.domain.models.InventoryItemState
 
 // Модель данных ТМЦ для показа в списке в окне сканирования и просмотра инвентаризации
 data class InventoryItemForListModel(
