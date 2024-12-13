@@ -6,9 +6,11 @@ import ru.lostgirl.rfidinventory.data.storage.models.InventoryLocation
 data class InventoryLocationFullModel(
     val id: Int?,
     val name: String,
+    val apiID: Int?,
 ) {
     fun toInventoryLocation() = InventoryLocation(
         id = this.id,
-        name = this.name
+        name = this.name,
+        apiID = this.apiID
     )
 }

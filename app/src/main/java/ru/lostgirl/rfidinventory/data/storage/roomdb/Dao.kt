@@ -13,7 +13,7 @@ interface Dao : InventoryStorage {
     @Insert
     override suspend fun insertInventoryLocation(location: InventoryLocation)
 
-    @Query(" select -1 as id, 'Все' as name union select * from inventory_location ")
+    @Query(" select -1 as id, 'Все' as name, -1 as api_id union select id, name, api_id from inventory_location ")
     override fun getAllLocationList(): List<InventoryLocation>
 
     @Query("select * from inventory_item")
@@ -21,6 +21,9 @@ interface Dao : InventoryStorage {
 
     @Insert
     override fun insertManyInventoryItem(items: List<InventoryItem>): List<Long>
+
+    @Insert
+    override fun insertManyInventoryLocation(items: List<InventoryLocation>): List<Long>
 
     @Query(
         """select * from inventory_item 

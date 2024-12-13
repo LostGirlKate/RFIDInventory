@@ -1,4 +1,4 @@
-package ru.lostgirl.rfidinventory.domain.usecase
+package ru.lostgirl.rfidinventory.domain.usecase.barcodereader
 
 import ru.lostgirl.rfidinventory.domain.repository.BarcodeReaderRepository
 

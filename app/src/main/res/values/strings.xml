@@ -77,5 +77,6 @@
     <string name="barcode_not_work">Не считывается ШК</string>
     <string name="rfid_not_work">Не считывается RFID</string>
     <string name="save">Сохранить</string>
+    <string name="load_from_api">Загрузить данные с сервера</string>
 
 </resources>

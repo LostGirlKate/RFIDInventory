@@ -36,7 +36,7 @@ object LoadDataToDataBaseUtil {
                 // если местоположение не найдено - добавляем его в  справочник
                 if (allLocation.none { it.name == loadedLocation }) {
                     inventoryRepository.insertInventoryLocation(
-                        InventoryLocationFullModel(null, loadedLocation)
+                        InventoryLocationFullModel(null, loadedLocation, null)
                     )
                     allLocation = inventoryRepository.getAllLocationList()
                 }
@@ -83,7 +83,8 @@ object LoadDataToDataBaseUtil {
             shipmentNum = shipmentNum,
             prevLocationID = null,
             prevLocation = null,
-            comment = null
+            comment = null,
+            apiID = null
         )
     }
 }

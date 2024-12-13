@@ -1,4 +1,4 @@
-package ru.lostgirl.rfidinventory.domain.usecase
+package ru.lostgirl.rfidinventory.domain.usecase.excel
 
 import android.content.ContentResolver
 import android.net.Uri

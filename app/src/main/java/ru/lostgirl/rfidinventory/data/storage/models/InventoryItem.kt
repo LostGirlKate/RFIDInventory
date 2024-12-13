@@ -3,11 +3,11 @@ package ru.lostgirl.rfidinventory.data.storage.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.lostgirl.rfidinventory.domain.models.InventoryItemForDetailFullModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForExportModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForListModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForScanningModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemFullModel
-import ru.lostgirl.rfidinventory.domain.models.InventoryItemForDetailFullModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemState
 import ru.lostgirl.rfidinventory.domain.models.toStr
 
@@ -70,6 +70,9 @@ class InventoryItem(
 
     @ColumnInfo(name = "comment")
     val comment: String?,
+
+    @ColumnInfo(name = "api_id")
+    val apiID: Int?,
 ) {
     fun toInventoryItemForExportModel(num: Int) =
         InventoryItemForExportModel(
@@ -130,7 +133,8 @@ class InventoryItem(
             actualLocation = this.actualLocation,
             prevLocationID = this.prevLocationID,
             prevLocation = this.prevLocation,
-            comment = this.comment
+            comment = this.comment,
+            apiID = this.apiID
         )
 
     fun toInventoryItemForScanningModel() =

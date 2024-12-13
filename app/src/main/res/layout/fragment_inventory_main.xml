@@ -172,6 +172,21 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <Button
+        android:id="@+id/load_from_api_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:background="@drawable/custon_button_background"
+        android:text="@string/load_from_api"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_button_size"
+        android:layout_marginBottom="10dp"
+        app:backgroundTint="@null"
+        app:layout_constraintBottom_toTopOf="@+id/load_from_file_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
         android:id="@+id/load_from_file_button"
         android:layout_width="0dp"
         android:layout_height="@dimen/button_height"

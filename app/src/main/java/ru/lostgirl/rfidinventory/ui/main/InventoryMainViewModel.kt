@@ -9,13 +9,16 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ru.lostgirl.rfidinventory.R
 import ru.lostgirl.rfidinventory.domain.usecase.ClearDataBaseUseCase
-import ru.lostgirl.rfidinventory.domain.usecase.ExportDataToExcelFileUseCase
-import ru.lostgirl.rfidinventory.domain.usecase.GetDataForExcelUseCase
-import ru.lostgirl.rfidinventory.domain.usecase.GetDataFromExcelUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryInfoUseCase
-import ru.lostgirl.rfidinventory.domain.usecase.IsRFIDReaderInitializedUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.LoadDataToDataBaseUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.api.ExportDataToApiUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.api.LoadDataFromApiUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.excel.ExportDataToExcelFileUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.excel.GetDataForExcelUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.excel.GetDataFromExcelUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.refidreader.IsRFIDReaderInitializedUseCase
 import ru.lostgirl.rfidinventory.mvi.MviViewModel
+import ru.lostgirl.rfidinventory.utils.error.AppError
 import java.text.SimpleDateFormat
 import java.util.Locale
 
@@ -27,6 +30,8 @@ class InventoryMainViewModel(
     private val getDataFromExcelUseCase: GetDataFromExcelUseCase,
     private val exportDataToExcelFileUseCase: ExportDataToExcelFileUseCase,
     private val isRFIDReaderInitializedUseCase: IsRFIDReaderInitializedUseCase,
+    private val loadDataFromApiUseCase: LoadDataFromApiUseCase,
+    private val exportDataToApiUseCase: ExportDataToApiUseCase,
     application: Application,
 ) :
     MviViewModel<InventoryMainViewState, InventoryMainViewEffect, InventoryMainViewEvent>(
@@ -79,6 +84,10 @@ class InventoryMainViewModel(
             InventoryMainViewEvent.RefreshData -> {
                 refreshInventoryState()
             }
+
+            is InventoryMainViewEvent.LoadDataFromApi -> {
+                loadDataFromApi(viewEvent.processDialog)
+            }
         }
     }
 
@@ -107,6 +116,27 @@ class InventoryMainViewModel(
                     contentResolver
                 )
             val parseResult = parseDataToDataBase(dataArray) && dataArray.isNotEmpty()
+            viewEffect = InventoryMainViewEffect.HideAlertProcessDialog(processDialog)
+            viewEffect = InventoryMainViewEffect.ShowToast(
+                R.string.data_load_message, R.string.data_error_load_message,
+                !parseResult
+            )
+        }
+    }
+
+    // Загрузка данных с сервера и сохранение их в BD
+    private fun loadDataFromApi(
+        processDialog: AlertDialog?,
+    ) {
+        var parseResult = true
+        viewModelScope.launch(Dispatchers.IO) {
+            try {
+                loadDataFromApiUseCase.execute()
+                viewState = viewState.copy(inventoryState = getInventoryInfo.execute())
+            } catch (e: AppError) {
+                parseResult = false
+            }
+
             viewEffect = InventoryMainViewEffect.HideAlertProcessDialog(processDialog)
             viewEffect = InventoryMainViewEffect.ShowToast(
                 R.string.data_load_message, R.string.data_error_load_message,

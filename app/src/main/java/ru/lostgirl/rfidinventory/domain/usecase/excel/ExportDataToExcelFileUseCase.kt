@@ -1,4 +1,4 @@
-package ru.lostgirl.rfidinventory.domain.usecase
+package ru.lostgirl.rfidinventory.domain.usecase.excel
 
 import ru.lostgirl.rfidinventory.R
 import ru.lostgirl.rfidinventory.utils.ExcelUtil

@@ -18,6 +18,9 @@ interface InventoryStorage {
     // insert ТМЦ list
     fun insertManyInventoryItem(items: List<InventoryItem>): List<Long>
 
+    // insert Location list
+    fun insertManyInventoryLocation(items: List<InventoryLocation>): List<Long>
+
     // список ТМЦ по местоположению
     fun getInventoryItemByLocationID(locationID: Int): List<InventoryItem>
 

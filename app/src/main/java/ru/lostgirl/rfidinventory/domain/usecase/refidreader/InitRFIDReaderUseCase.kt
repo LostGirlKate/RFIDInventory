@@ -1,4 +1,4 @@
-package ru.lostgirl.rfidinventory.domain.usecase
+package ru.lostgirl.rfidinventory.domain.usecase.refidreader
 
 import ru.lostgirl.rfidinventory.data.readers.rfid.IRfidReader
 

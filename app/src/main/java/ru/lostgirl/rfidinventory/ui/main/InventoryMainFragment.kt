@@ -81,6 +81,8 @@ class InventoryMainFragment :
         exportButton.visibility = if (viewState.exportButtonVisible) View.VISIBLE else View.GONE
         loadFromFileButton.visibility =
             if (viewState.loadFromFileButtonVisible) View.VISIBLE else View.GONE
+        loadFromApiButton.visibility =
+            if (viewState.loadFromFileButtonVisible) View.VISIBLE else View.GONE
         loadingWarningText.visibility =
             if (viewState.loadingWarningTextVisible) View.VISIBLE else View.GONE
         progressPercentText.setTextColor(
@@ -98,6 +100,14 @@ class InventoryMainFragment :
         }
         loadFromFileButton.setOnClickListener {
             viewModel.process(InventoryMainViewEvent.OpenFileManager)
+        }
+        loadFromApiButton.setOnClickListener {
+            viewModel.process(
+                InventoryMainViewEvent.ShowProcessDialog(
+                    R.string.file_load_action_message,
+                    InventoryMainViewEvent.LoadDataFromApi()
+                )
+            )
         }
         exportButton.setOnClickListener {
             viewModel.process(
@@ -153,6 +163,12 @@ class InventoryMainFragment :
             }
 
             is InventoryMainViewEvent.CloseInventory -> {
+                viewModel.process(
+                    processEvent.copy(processDialog = activeProcessDialog)
+                )
+            }
+
+            is InventoryMainViewEvent.LoadDataFromApi -> {
                 viewModel.process(
                     processEvent.copy(processDialog = activeProcessDialog)
                 )

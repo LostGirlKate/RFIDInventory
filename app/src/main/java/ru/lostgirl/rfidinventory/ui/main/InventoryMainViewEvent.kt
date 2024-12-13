@@ -12,6 +12,11 @@ sealed class InventoryMainViewEvent {
         val processDialog: AlertDialog? = null,
     ) : InventoryMainViewEvent()
 
+    // Загрузка данных с сервера
+    data class LoadDataFromApi(
+        val processDialog: AlertDialog? = null,
+    ) : InventoryMainViewEvent()
+
     // Открыть окно для выбора файла для загрузки
     object OpenFileManager : InventoryMainViewEvent()
 

@@ -13,9 +13,13 @@ class InventoryLocation(
 
     @ColumnInfo(name = "name")
     val name: String,
+
+    @ColumnInfo(name = "api_id")
+    val apiID: Int?,
 ) {
     fun toInventoryLocationFullModel() = InventoryLocationFullModel(
         id = this.id,
-        name = this.name
+        name = this.name,
+        apiID = this.apiID
     )
 }
