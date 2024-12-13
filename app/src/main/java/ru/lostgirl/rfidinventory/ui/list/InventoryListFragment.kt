@@ -158,6 +158,25 @@ class InventoryListFragment :
 
     // Открытие окна для сканирования, доступно только если выбран фильтр по местоположению
     private fun openScannerFragment(type: ReaderType) {
+        val title = binding.locationSpinner.text
+        val locationID = locationList.firstOrNull { it.name == title }?.id ?: 0
+        if (locationID < 1) {
+            UIHelper.detailDialog(
+                requireContext(),
+                getString(R.string.you_need_choose_location_file),
+                0,
+                false,
+                R.color.textColor
+            )
+        } else {
+            val action =
+                InventoryListFragmentDirections.actionInventoryListFragmentToRfidScannerFragment(
+                    title.toString(),
+                    locationID,
+                    type
+                )
+            findNavController().navigate(action)
+        }
     }
 
     // Инициализация фильтров по статусам

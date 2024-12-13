@@ -22,6 +22,9 @@
         <action
             android:id="@+id/action_inventoryListFragment_to_inventoryItemDetailFragment"
             app:destination="@id/inventoryItemDetailFragment" />
+        <action
+            android:id="@+id/action_inventoryListFragment_to_rfidScannerFragment"
+            app:destination="@id/rfidScannerFragment" />
     </fragment>
     <fragment
         android:id="@+id/inventoryItemDetailFragment"
@@ -40,6 +43,23 @@
             app:argType="ru.lostgirl.rfidinventory.domain.models.InventoryItemState"
             android:defaultValue="STATE_FOUND" />
     </fragment>
+    <fragment
+        android:id="@+id/rfidScannerFragment"
+        android:name="ru.lostgirl.rfidinventory.ui.rfidscan.RfidScannerFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_rfid_scanner" >
+        <argument
+            android:name="title"
+            app:argType="string" />
+        <argument
+            android:name="location_id"
+            app:argType="integer"
+            android:defaultValue="-1" />
+        <argument
+            android:name="scanner_type"
+            app:argType="ru.lostgirl.rfidinventory.data.readers.ReaderType"
+            android:defaultValue="RFID" />
 
+    </fragment>
 
 </navigation>

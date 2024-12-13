@@ -13,6 +13,7 @@ import ru.lostgirl.rfidinventory.domain.usecase.ExportDataToExcelFileUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetDataForExcelUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetDataFromExcelUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryInfoUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.IsRFIDReaderInitializedUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.LoadDataToDataBaseUseCase
 import ru.lostgirl.rfidinventory.mvi.MviViewModel
 import java.text.SimpleDateFormat
@@ -25,6 +26,7 @@ class InventoryMainViewModel(
     private val clearDataBaseUseCase: ClearDataBaseUseCase,
     private val getDataFromExcelUseCase: GetDataFromExcelUseCase,
     private val exportDataToExcelFileUseCase: ExportDataToExcelFileUseCase,
+    private val isRFIDReaderInitializedUseCase: IsRFIDReaderInitializedUseCase,
     application: Application,
 ) :
     MviViewModel<InventoryMainViewState, InventoryMainViewEffect, InventoryMainViewEvent>(

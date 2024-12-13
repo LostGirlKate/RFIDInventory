@@ -6,6 +6,7 @@ import org.koin.dsl.module
 import ru.lostgirl.rfidinventory.ui.detail.InventoryItemDetailViewModel
 import ru.lostgirl.rfidinventory.ui.list.InventoryListViewModel
 import ru.lostgirl.rfidinventory.ui.main.InventoryMainViewModel
+import ru.lostgirl.rfidinventory.ui.rfidscan.RfidScannerViewModel
 
 val appModule = module {
 
@@ -17,7 +18,8 @@ val appModule = module {
             getDataForExcelUseCase = get(),
             clearDataBaseUseCase = get(),
             getDataFromExcelUseCase = get(),
-            exportDataToExcelFileUseCase = get()
+            exportDataToExcelFileUseCase = get(),
+            isRFIDReaderInitializedUseCase = get()
         )
     }
 
@@ -33,11 +35,31 @@ val appModule = module {
         )
     }
 
+    viewModel<RfidScannerViewModel> {
+        RfidScannerViewModel(
+            application = androidApplication(),
+            getInventoryItemByLocationIDUseCase = get(),
+            getInventoryInfoUseCase = get(),
+            updateInventoryItemUseCase = get(),
+            getAllInventoryItemListForRfidScanningUseCase = get(),
+            startRFiDInventoryUseCase = get(),
+            stopRFiDInventoryUseCase = get(),
+            getRFIDReaderPowerUseCase = get(),
+            isRFIDReaderInitializedUseCase = get(),
+            openBarcodeReaderUseCase = get(),
+            closeBarcodeReaderUseCase = get(),
+            startBarcodeReaderUseCase = get(),
+            stopBarcodeReaderUseCase = get(),
+            resetLocationInventoryItemByID = get(),
+            setCommentInventoryItemByIDUseCase = get(),
+            setFoundInventoryItemByIDUseCase = get()
+        )
+    }
+
     viewModel<InventoryItemDetailViewModel> {
         InventoryItemDetailViewModel(
             application = androidApplication(),
             getInventoryItemDetailUseCase = get()
         )
     }
-
 }

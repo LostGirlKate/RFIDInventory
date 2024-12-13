@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:paddingTop="10dp"
+    tools:context=".ui.rfidscan.RfidScannerFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/settingPanel"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme.MaterialComponents.DayNight"
+        android:visibility="invisible"
+        app:cardCornerRadius="20dp"
+        android:layout_marginHorizontal="16dp"
+        app:cardElevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="@color/colorPrimary"
+        app:strokeWidth="1dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="13dp">
+
+            <TextView
+                android:id="@+id/title_power"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/rfid_power_title"
+                android:textSize="@dimen/text_caption_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/scanner_power_slider"
+                style="@style/Widget.MaterialComponents.Slider"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:value="50"
+                android:valueFrom="0.0"
+                android:valueTo="100"
+                app:haloColor="@color/colorPrimary"
+                app:labelStyle="@style/sliderLabel"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/title_power"
+                app:thumbColor="@color/colorPrimary"
+                app:thumbElevation="10dp"
+                app:tickColorInactive="@color/colorPrimary"
+                app:trackColorActive="@color/colorPrimary"
+                app:trackColorInactive="@color/grey"
+                app:trackHeight="7dp"
+                tools:ignore="SpeakableTextPresentCheck" />
+
+            <TextView
+                android:id="@+id/scanner_power_value_caption"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_medium_size"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/scanner_power_slider"
+                tools:text="@string/current_power" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/error_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="16dp"
+        android:text="@string/init_error_rfid_message"
+        android:textAlignment="center"
+        android:textColor="@color/red"
+        android:textSize="@dimen/text_caption_size"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/settingPanel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/filter_state_block"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingPanel">
+
+        <ToggleButton
+            android:id="@+id/filter_button_not_found"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_min_height"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/filter_red_button_background"
+            android:button="@drawable/filter_red_button_background"
+            android:checked="true"
+            android:freezesText="false"
+            android:textColor="@color/white"
+            android:textOff="@string/blank_string"
+            android:textOn="@string/blank_string"
+            android:textSize="@dimen/text_big_size" />
+
+        <ToggleButton
+            android:id="@+id/filter_button_found"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_min_height"
+            android:layout_marginEnd="12dp"
+            android:layout_weight="1"
+            android:background="@drawable/filter_green_button_background"
+            android:checked="true"
+            android:textColor="@color/white"
+            android:textOff="@string/blank_string"
+            android:textOn="@string/blank_string"
+            android:textSize="@dimen/text_big_size" />
+
+        <ToggleButton
+            android:id="@+id/filter_button_found_in_wrong_place"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/button_min_height"
+            android:layout_weight="1"
+            android:background="@drawable/filter_orange_button_background"
+            android:checked="true"
+            android:textColor="@color/white"
+            android:textOff="@string/blank_string"
+            android:textOn="@string/blank_string"
+            android:textSize="@dimen/text_big_size" />
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_items"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toTopOf="@+id/scanning_block"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/filter_state_block" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scanning_block"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="15dp"
+        android:visibility="gone"
+        android:background="@drawable/scanning_block_background"
+        app:layout_constraintBottom_toTopOf="@id/button_panel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/scanning_caption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:text="@string/scanning_running" />
+
+        <TextView
+            android:id="@+id/progress_percent_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/textColor"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@+id/progress_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/progress_bar"
+            tools:text="50%" />
+
+        <com.google.android.material.progressindicator.CircularProgressIndicator
+            android:id="@+id/progress_bar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            app:indicatorSize="70dp"
+            android:layout_marginTop="10dp"
+            app:indicatorColor="@color/colorPrimary"
+            app:trackColor="@color/grey"
+            android:max="100"
+            android:progress="50"
+            android:textAlignment="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/scanning_caption" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <FrameLayout
+        android:id="@+id/button_panel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <Button
+            android:id="@+id/stop_rfid_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/custon_button_background"
+            android:text="@string/stop_scanning"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_button_size"
+            android:visibility="invisible"
+            app:backgroundTint="@null" />
+
+        <Button
+            android:id="@+id/start_rfid_button"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:background="@drawable/custon_button_background"
+            android:text="@string/start_scanning"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_button_size"
+            android:visibility="invisible"
+            app:backgroundTint="@null" />
+
+    </FrameLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
