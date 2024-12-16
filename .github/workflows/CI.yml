@@ -25,6 +25,9 @@ jobs:
       - name: Add Api Key
         run: echo "API_KEY=\"\"" >> local.properties
         
+      - name: Touch local properties2
+        run: touch local.properties
+        
       - name: Add Api Path
         run: echo "API_PATH=\"http://192.168.10.51:4000\"" >> local.properties
 
