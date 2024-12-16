@@ -1,8 +1,12 @@
 package ru.lostgirl.rfidinventory.domain.repository
 
-import ru.lostgirl.rfidinventory.data.api.models.Item
+import ru.lostgirl.rfidinventory.data.api.models.ItemForSave
 
 interface ApiRepository {
+
+    // Загрузка данных по API
     suspend fun load()
-    suspend fun saveItems(items: List<Item>)
+
+    // Сохранение данных по API
+    suspend fun saveItems()
 }

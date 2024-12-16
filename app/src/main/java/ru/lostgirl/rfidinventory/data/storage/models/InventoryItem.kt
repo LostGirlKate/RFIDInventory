@@ -3,6 +3,7 @@ package ru.lostgirl.rfidinventory.data.storage.models
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ru.lostgirl.rfidinventory.data.api.models.ItemForSave
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForDetailFullModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForExportModel
 import ru.lostgirl.rfidinventory.domain.models.InventoryItemForListModel
@@ -152,4 +153,11 @@ class InventoryItem(
             this.locationID -> InventoryItemState.STATE_FOUND
             else -> InventoryItemState.STATE_FOUND_IN_WRONG_PLACE
         }
+
+    fun toApiItemForSave() =
+        ItemForSave(
+            itemId = this.id,
+            locationId = this.actualLocationID,
+            comment = this.comment
+        )
 }

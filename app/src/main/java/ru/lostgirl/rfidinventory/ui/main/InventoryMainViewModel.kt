@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 import ru.lostgirl.rfidinventory.R
 import ru.lostgirl.rfidinventory.domain.usecase.ClearDataBaseUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryInfoUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.IsDataFromApiUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.LoadDataToDataBaseUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.api.ExportDataToApiUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.api.LoadDataFromApiUseCase
@@ -32,6 +33,7 @@ class InventoryMainViewModel(
     private val isRFIDReaderInitializedUseCase: IsRFIDReaderInitializedUseCase,
     private val loadDataFromApiUseCase: LoadDataFromApiUseCase,
     private val exportDataToApiUseCase: ExportDataToApiUseCase,
+    private val isDataFromApiUseCase: IsDataFromApiUseCase,
     application: Application,
 ) :
     MviViewModel<InventoryMainViewState, InventoryMainViewEffect, InventoryMainViewEvent>(
@@ -39,7 +41,7 @@ class InventoryMainViewModel(
     ) {
 
     init {
-        viewState = InventoryMainViewState(getInventoryInfo.execute())
+        viewState = InventoryMainViewState(getInventoryInfo.execute(), isDataFromApiUseCase.execute())
     }
 
     override fun process(viewEvent: InventoryMainViewEvent) {
@@ -88,6 +90,10 @@ class InventoryMainViewModel(
             is InventoryMainViewEvent.LoadDataFromApi -> {
                 loadDataFromApi(viewEvent.processDialog)
             }
+
+            is InventoryMainViewEvent.SaveDataToApi -> {
+                exportDataToApi(viewEvent.processDialog)
+            }
         }
     }
 
@@ -132,7 +138,10 @@ class InventoryMainViewModel(
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 loadDataFromApiUseCase.execute()
-                viewState = viewState.copy(inventoryState = getInventoryInfo.execute())
+                viewState = viewState.copy(
+                    inventoryState = getInventoryInfo.execute(),
+                    isDataFromApi = isDataFromApiUseCase.execute()
+                )
             } catch (e: AppError) {
                 parseResult = false
             }
@@ -141,6 +150,20 @@ class InventoryMainViewModel(
             viewEffect = InventoryMainViewEffect.ShowToast(
                 R.string.data_load_message, R.string.data_error_load_message,
                 !parseResult
+            )
+        }
+    }
+
+    // Сохранение данных на сервер
+    private fun exportDataToApi(
+        processDialog: AlertDialog?,
+    ) {
+        viewModelScope.launch(Dispatchers.IO) {
+            val loadResult = saveDataToApi()
+            viewEffect = InventoryMainViewEffect.HideAlertProcessDialog(processDialog)
+            viewEffect = InventoryMainViewEffect.ShowToast(
+                R.string.api_save_message, R.string.api_error_save_message,
+                !loadResult
             )
         }
     }
@@ -161,13 +184,14 @@ class InventoryMainViewModel(
 
     // Обновление информации об инвентаризации
     private fun refreshInventoryState() {
-        viewState = viewState.copy(inventoryState = getInventoryInfo.execute())
+        viewState =
+            viewState.copy(inventoryState = getInventoryInfo.execute(), isDataFromApi = isDataFromApiUseCase.execute())
     }
 
     // Завершение  нвентаризации (сохранение данных в файл и при успешном сохранении очистка BD)
     private fun closeInventory(processDialog: AlertDialog?) {
         viewModelScope.launch(Dispatchers.IO) {
-            var result = exportData()
+            var result = if (viewState.isDataFromApi) saveDataToApi() else exportData()
             if (result) {
                 result = clearDataBaseUseCase.execute()
             }
@@ -191,10 +215,24 @@ class InventoryMainViewModel(
         )
     }
 
+    // Сохранение данных по API
+    private suspend fun saveDataToApi(): Boolean {
+        var result = true
+        try {
+            exportDataToApiUseCase.execute()
+        } catch (e: AppError) {
+            result = false
+        }
+        return result
+    }
+
     // Сохранение массива данных в BD
     private suspend fun parseDataToDataBase(data: Array<Array<String>>): Boolean {
         val result = loadDataToDataBaseUseCase.execute(data)
-        viewState = viewState.copy(inventoryState = getInventoryInfo.execute())
+        viewState = viewState.copy(
+            inventoryState = getInventoryInfo.execute(),
+            isDataFromApi = isDataFromApiUseCase.execute()
+        )
         return result
     }
 }

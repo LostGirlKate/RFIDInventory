@@ -8,6 +8,7 @@ import ru.lostgirl.rfidinventory.domain.usecase.GetAllLocationsUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryInfoUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryItemByLocationIDUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.GetInventoryItemDetailUseCase
+import ru.lostgirl.rfidinventory.domain.usecase.IsDataFromApiUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.LoadDataToDataBaseUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.ResetLocationInventoryItemByIDUseCase
 import ru.lostgirl.rfidinventory.domain.usecase.SetCommentInventoryItemByIDUseCase
@@ -139,5 +140,9 @@ val domainModule = module {
 
     factory<ExportDataToApiUseCase> {
         ExportDataToApiUseCase(apiRepository = get())
+    }
+
+    factory<IsDataFromApiUseCase> {
+        IsDataFromApiUseCase(repository = get())
     }
 }

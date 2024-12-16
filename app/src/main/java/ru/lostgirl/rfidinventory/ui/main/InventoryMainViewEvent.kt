@@ -18,10 +18,10 @@ sealed class InventoryMainViewEvent {
     ) : InventoryMainViewEvent()
 
     // Открыть окно для выбора файла для загрузки
-    object OpenFileManager : InventoryMainViewEvent()
+    data object OpenFileManager : InventoryMainViewEvent()
 
     // Обновить даннные о состоянии инвентаризации
-    object RefreshData : InventoryMainViewEvent()
+    data object RefreshData : InventoryMainViewEvent()
 
     // Показать ProcessDialog при выполнении долгих расчетов, в параметр передаем Event,
     // который запустится после начала отображения ProcessDialog
@@ -30,6 +30,11 @@ sealed class InventoryMainViewEvent {
 
     // Сохранить данные в файл
     data class SaveDataToFile(
+        val processDialog: AlertDialog? = null,
+    ) : InventoryMainViewEvent()
+
+    // Сохранить данные на сервер
+    data class SaveDataToApi(
         val processDialog: AlertDialog? = null,
     ) : InventoryMainViewEvent()
 

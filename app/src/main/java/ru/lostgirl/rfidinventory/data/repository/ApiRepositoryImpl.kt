@@ -1,7 +1,7 @@
 package ru.lostgirl.rfidinventory.data.repository
 
 import ru.lostgirl.rfidinventory.data.api.ApiService
-import ru.lostgirl.rfidinventory.data.api.models.Item
+import ru.lostgirl.rfidinventory.data.api.models.InventoryDataForSave
 import ru.lostgirl.rfidinventory.data.storage.InventoryStorage
 import ru.lostgirl.rfidinventory.domain.repository.ApiRepository
 import ru.lostgirl.rfidinventory.utils.error.ApiError
@@ -42,9 +42,12 @@ class ApiRepositoryImpl(
         }
     }
 
-    override suspend fun saveItems(items: List<Item>) {
+    override suspend fun saveItems() {
         try {
-            val response = apiService.saveItems(emptyList())
+            val items = inventoryStorage.getInventoryItemForSave().map {
+                it.toApiItemForSave()
+            }
+            val response = apiService.saveItems(InventoryDataForSave(items = items))
             if (!response.isSuccessful) {
                 throw ApiError(response.code(), response.message())
             }

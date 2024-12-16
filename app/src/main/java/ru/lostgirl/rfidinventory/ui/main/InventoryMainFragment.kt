@@ -79,6 +79,7 @@ class InventoryMainFragment :
         closeInventoryButton.visibility =
             if (viewState.closeInventoryButtonVisible) View.VISIBLE else View.GONE
         exportButton.visibility = if (viewState.exportButtonVisible) View.VISIBLE else View.GONE
+        exportToApiButton.visibility = if (viewState.exportToApiButtonVisible) View.VISIBLE else View.GONE
         loadFromFileButton.visibility =
             if (viewState.loadFromFileButtonVisible) View.VISIBLE else View.GONE
         loadFromApiButton.visibility =
@@ -114,6 +115,14 @@ class InventoryMainFragment :
                 InventoryMainViewEvent.ShowProcessDialog(
                     R.string.file_save_action_message,
                     InventoryMainViewEvent.SaveDataToFile()
+                )
+            )
+        }
+        exportToApiButton.setOnClickListener {
+            viewModel.process(
+                InventoryMainViewEvent.ShowProcessDialog(
+                    R.string.api_save_action_message,
+                    InventoryMainViewEvent.SaveDataToApi()
                 )
             )
         }
@@ -157,6 +166,12 @@ class InventoryMainFragment :
             }
 
             is InventoryMainViewEvent.SaveDataToFile -> {
+                viewModel.process(
+                    processEvent.copy(processDialog = activeProcessDialog)
+                )
+            }
+
+            is InventoryMainViewEvent.SaveDataToApi -> {
                 viewModel.process(
                     processEvent.copy(processDialog = activeProcessDialog)
                 )

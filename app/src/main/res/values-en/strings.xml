@@ -23,7 +23,7 @@
     <string name="data_save_message">Data saved</string>
     <string name="data_error_save_message">Error</string>
     <string name="file_load_action_message">Loading</string>
-    <string name="data_load_message">Loading complite</string>
+    <string name="data_load_message">Loading complete</string>
     <string name="data_error_load_message">Loading error</string>
     <string name="file_save_action_message">Saving data to a file</string>
     <string name="file_save_message">The file is saved to the Downloads folder</string>
@@ -62,4 +62,8 @@
     <string name="rfid_not_work">RFID is not read</string>
     <string name="save">Save</string>
     <string name="load_from_api">Load from remote server</string>
+    <string name="export_to_api">Export to remote server</string>
+    <string name="api_save_action_message">Saving data to server</string>
+    <string name="api_save_message">Saving complete</string>
+    <string name="api_error_save_message">Saving error</string>
 </resources>

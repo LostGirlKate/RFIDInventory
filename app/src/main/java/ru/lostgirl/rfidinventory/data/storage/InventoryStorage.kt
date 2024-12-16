@@ -24,6 +24,12 @@ interface InventoryStorage {
     // список ТМЦ по местоположению
     fun getInventoryItemByLocationID(locationID: Int): List<InventoryItem>
 
+    // список ТМЦ по местоположению
+    fun getInventoryItemForSave(): List<InventoryItem>
+
+    // проверка загружены ли данные по API
+    fun isDataFromApi(): Boolean
+
     // Информация об общем количестве объектов для инвентаризации
     fun getInventoryItemsCounts(locationID: Int): List<InventoryCounts>
 

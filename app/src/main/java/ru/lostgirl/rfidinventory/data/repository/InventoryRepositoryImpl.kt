@@ -79,4 +79,6 @@ class InventoryRepositoryImpl(
     override fun setFoundInventoryItemByID(id: Int) {
         inventoryStorage.setFoundInventoryItemByID(id)
     }
+
+    override fun isDataFromApi(): Boolean = inventoryStorage.isDataFromApi()
 }

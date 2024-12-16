@@ -240,6 +240,21 @@
         app:backgroundTint="@null"
         android:textColor="@color/white"
         android:textSize="@dimen/text_button_size"
+        app:layout_constraintBottom_toTopOf="@+id/export_to_api_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/export_to_api_button"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/custon_button_background"
+        android:text="@string/export_to_api"
+        android:textAllCaps="false"
+        app:backgroundTint="@null"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_button_size"
         app:layout_constraintBottom_toTopOf="@+id/export_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

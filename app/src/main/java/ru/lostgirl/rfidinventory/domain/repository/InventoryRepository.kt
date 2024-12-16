@@ -52,4 +52,7 @@ interface InventoryRepository {
 
     // Установить статус найдено вручную
     fun setFoundInventoryItemByID(id: Int)
+
+    // проверка загружены ли данные по API
+    fun isDataFromApi(): Boolean
 }

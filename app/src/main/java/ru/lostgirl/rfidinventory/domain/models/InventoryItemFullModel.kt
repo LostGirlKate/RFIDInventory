@@ -1,6 +1,7 @@
 package ru.lostgirl.rfidinventory.domain.models
 
 import ru.lostgirl.rfidinventory.data.api.models.Item
+import ru.lostgirl.rfidinventory.data.api.models.ItemForSave
 import ru.lostgirl.rfidinventory.data.storage.models.InventoryItem
 
 // Модель данных ТМЦ с полным списком параметров
@@ -40,18 +41,4 @@ data class InventoryItemFullModel(
         comment = this.comment,
         apiID = apiID
     )
-
-    fun toApiItem() =
-        Item(
-            itemId = this.id,
-            inventoryNum = this.inventoryNum,
-            managerName = this.managerName,
-            locationId = this.actualLocationID,
-            type = this.type,
-            model = this.model,
-            serialNum = this.serialNum,
-            shipmentNum = this.shipmentNum,
-            rfidCardNum = this.rfidCardNum,
-            comment = this.comment
-        )
 }

@@ -21,7 +21,8 @@ val appModule = module {
             exportDataToExcelFileUseCase = get(),
             isRFIDReaderInitializedUseCase = get(),
             loadDataFromApiUseCase = get(),
-            exportDataToApiUseCase = get()
+            exportDataToApiUseCase = get(),
+            isDataFromApiUseCase = get()
         )
     }
 

@@ -70,4 +70,10 @@ interface Dao : InventoryStorage {
         "UPDATE inventory_item SET prev_location = actual_location , prev_location_id = actual_location_id, actual_location_id = location_id , actual_location = location WHERE id = :id "
     )
     override fun setFoundInventoryItemByID(id: Int)
+
+    @Query("select * from inventory_item where actual_location_id is not null")
+    override fun getInventoryItemForSave(): List<InventoryItem>
+
+    @Query("select count(api_id) > 0 from inventory_location where api_id is not null")
+    override fun isDataFromApi(): Boolean
 }

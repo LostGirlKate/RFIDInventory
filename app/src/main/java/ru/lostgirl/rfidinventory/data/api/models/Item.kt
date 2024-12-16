@@ -56,3 +56,12 @@ data class Item(
         apiID = this.itemId
     )
 }
+
+data class ItemForSave(
+    @SerializedName(value = "item_id")
+    val itemId: Int?,
+    @SerializedName(value = "location_id")
+    val locationId: Int?,
+    @SerializedName(value = "comment")
+    val comment: String?,
+)

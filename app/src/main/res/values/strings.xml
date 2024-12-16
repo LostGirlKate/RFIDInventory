@@ -78,5 +78,9 @@
     <string name="rfid_not_work">Не считывается RFID</string>
     <string name="save">Сохранить</string>
     <string name="load_from_api">Загрузить данные с сервера</string>
+    <string name="export_to_api">Выгрузить данные на сервер</string>
+    <string name="api_save_action_message">Сохранение данных на сервер</string>
+    <string name="api_save_message">Данные сохранены на сервер</string>
+    <string name="api_error_save_message">Ошибка соранения данных на сервер</string>
 
 </resources>

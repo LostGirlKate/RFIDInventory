@@ -6,6 +6,7 @@ import ru.lostgirl.rfidinventory.domain.models.InventoryState
 
 data class InventoryMainViewState(
     val inventoryState: InventoryInfoModel,
+    val isDataFromApi: Boolean = false
 ) {
     // Показвать ли блок со статусом инвентаризации (показывается если данные были загружены)
     val mainInfoBlockVisible = (inventoryState.inventoryState != InventoryState.STATE_NOT_START)
@@ -20,6 +21,9 @@ data class InventoryMainViewState(
 
     // Видна ли кнопка выгрузки данных в Excel (показывается если данные были загружены)
     val exportButtonVisible = (inventoryState.inventoryState != InventoryState.STATE_NOT_START)
+
+    // Видна ли кнопка выгрузки данных на сервер (показывается если данные были загружены)
+    val exportToApiButtonVisible = (inventoryState.inventoryState != InventoryState.STATE_NOT_START && isDataFromApi)
 
     // Видна ли кнопка загрузки данных (показывается если данные НЕ были загружены)
     val loadFromFileButtonVisible =

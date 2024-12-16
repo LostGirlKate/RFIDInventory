@@ -5,12 +5,12 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.PUT
 import ru.lostgirl.rfidinventory.data.api.models.InventoryData
-import ru.lostgirl.rfidinventory.data.api.models.Item
+import ru.lostgirl.rfidinventory.data.api.models.InventoryDataForSave
 
 interface ApiService {
     @GET("full/")
     suspend fun getAll(): Response<InventoryData>
 
     @PUT("items/")
-    suspend fun saveItems(@Body items: List<Item>): Response<Unit>
+    suspend fun saveItems(@Body items: InventoryDataForSave): Response<Unit>
 }
