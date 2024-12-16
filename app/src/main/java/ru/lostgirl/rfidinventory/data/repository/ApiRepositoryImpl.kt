@@ -21,12 +21,12 @@ class ApiRepositoryImpl(
             }
             val body = response.body() ?: throw ApiError(response.code(), response.message())
             //Сохранение справочника location
-            val locations = body.data.locations.map { it.toInventoryLocation() }
+            val locations = body.locations.map { it.toInventoryLocation() }
             inventoryStorage.insertManyInventoryLocation(locations)
             val localLocations = inventoryStorage.getAllLocationList()
 
             //Сохранение справочника ТМЦ
-            val items = body.data.items.map { item ->
+            val items = body.items.map { item ->
                 val localLocationID = localLocations.firstOrNull { it.apiID == item.locationId }?.apiID ?: 0
                 val localLocation = localLocations.firstOrNull { it.apiID == item.locationId }?.name ?: ""
                 item.toInventoryItem(

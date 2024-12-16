@@ -6,7 +6,3 @@ data class InventoryData(
     val locations: List<Location>,
     val items: List<Item>,
 )
-
-data class Data(
-    val data: InventoryData,
-)

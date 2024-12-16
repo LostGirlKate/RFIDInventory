@@ -18,6 +18,15 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
+          
+      - name: Touch local properties
+        run: touch local.properties
+
+      - name: Add Api Key
+        run: echo "API_KEY=\"\"" >> local.properties
+        
+      - name: Add Api Path
+        run: echo "API_PATH=\"\"" >> local.properties
 
       - name: Build
         run: |
