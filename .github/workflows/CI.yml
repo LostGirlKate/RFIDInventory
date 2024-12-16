@@ -18,15 +18,9 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 17
-          
-      - name: Touch local properties
-        run: touch local.properties
 
       - name: Add Api Key
-        run: echo "API_KEY=123" >> local.properties
-        
-      - name: Add Api Path
-        run: echo "API_PATH=http://192.168.10.51:4000" >> local.properties
+        run: echo -e "API_KEY=123\nAPI_PATH=http://192.168.10.51:4000" > local.properties
 
       - name: Build
         run: |
