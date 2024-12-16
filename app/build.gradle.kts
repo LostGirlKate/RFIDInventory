@@ -29,6 +29,8 @@ android {
             isMinifyEnabled = false
         }
         release {
+            buildConfigField("String", "API_PATH", "\"${apiPah}\"")
+            buildConfigField("String", "API_KEY", "\"${apiKey}\"")
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
         }
